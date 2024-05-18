@@ -275,14 +275,15 @@ pub async fn handle(greeter: Arc<RwLock<Greeter>>, input: KeyEvent, ipc: Ipc) ->
       _ => {}
     },
 
+    // Handle deletion of characters.
+    KeyEvent { code: KeyCode::Backspace, .. } | KeyEvent { code: KeyCode::Char('h'), modifiers: KeyModifiers::CONTROL, .. } => delete_key(&mut greeter, KeyCode::Backspace).await,
+    KeyEvent { code: KeyCode::Delete, .. } => delete_key(&mut greeter, input.code).await,
+
     // Do not handle any other controls keybindings
     KeyEvent { modifiers: KeyModifiers::CONTROL, .. } => {}
 
     // Handle free-form entry of characters.
     KeyEvent { code: KeyCode::Char(c), .. } => insert_key(&mut greeter, c).await,
-
-    // Handle deletion of characters.
-    KeyEvent { code: KeyCode::Backspace, .. } | KeyEvent { code: KeyCode::Delete, .. } => delete_key(&mut greeter, input.code).await,
 
     _ => {}
   }
