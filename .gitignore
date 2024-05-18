@@ -1,4 +1,8 @@
 /target
 /contrib/man/*.roff
 
-.vscode/
+.*
+!.gitignore
+!.github
+!.envrc
+!.rustfmt.toml

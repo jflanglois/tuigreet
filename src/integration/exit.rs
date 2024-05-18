@@ -4,6 +4,7 @@ use libgreetd_stub::SessionOptions;
 use super::common::IntegrationRunner;
 
 #[tokio::test]
+#[cfg(debug_assertions)]
 async fn exit() {
   let opts = SessionOptions {
     username: "apognu".to_string(),

@@ -1,5 +1,6 @@
 [package]
 name = "tuigreet"
+description = "TUI greeter for greetd"
 version = "0.9.1"
 authors = ["Antoine POPINEAU <antoine@popineau.eu>"]
 edition = "2018"
